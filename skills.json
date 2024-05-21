@@ -1,0 +1,47 @@
+{
+    "skills": {
+      "Programming": [
+        { "name": "C++", "level": 5 },
+        { "name": "Java", "level": 2 },
+        { "name": "SQL", "level": 5 },
+        { "name": "Python", "level": 4 }
+      ],
+      "Platforms": [
+        { "name": "Linux", "level": 4 },
+        { "name": "AWS", "level": 3 },
+        { "name": "Windows", "level": 3 },
+        { "name": "Nvidia Jetson", "level": 2 }
+      ],
+      "Universal Tools": [
+        { "name": "BASH", "level": 4 },
+        { "name": "Visual Studio", "level": 2 },
+        { "name": "Git", "level": 5 },
+        { "name": "Jenkins CI", "level": 3 }
+      ],
+      "Advanced Tools": [
+        { "name": "Docker", "level": 4 },
+        { "name": "gRPC", "level": 3 },
+        { "name": "ZeroMQ", "level": 1 },
+        { "name": "Valgrind", "level": 3 },
+        { "name": "Flamegraph", "level": 2 },
+        { "name": "Gstreamer", "level": 1 },
+        { "name": "Nvidia CUDA", "level": 2 },
+        { "name": "OpenMP", "level": 3 }
+      ],
+      "Competences": [
+        { "name": "Testing", "level": 5 },
+        { "name": "Debugging", "level": 4 },
+        { "name": "DevOps", "level": 4 },
+        { "name": "Design Docs", "level": 5 },
+        { "name": "Embedded Dev.", "level": 1 },
+        { "name": "Agile Dev.", "level": 4 }
+      ],
+      "Languages": [
+        { "name": "English", "level": 5 },
+        { "name": "Italiano", "level": 5 },
+        { "name": "Deutsch", "level": 3 },
+        { "name": "Français", "level": 3 }
+      ]
+    }
+  }
+  

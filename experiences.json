@@ -1,0 +1,81 @@
+{
+  "experiences": [
+    {
+      "period": "03/2024 - 05/2024",
+      "location": "Winterthur",
+      "companySize": "3",
+      "title": "Software Developer",
+      "company": "Deep Impact",
+      "description": {
+        "en": "Had the opportunity to have direct experience of Computer Vision, both on cloud and edge embedded devices (Nvidia Jetson platform). Contributed by overhauling Docker setup and solving bugs.",
+        "de": "Sammelte direkte Erfahrungen mit Computer Vision sowohl auf Cloud-Plattformen als auch auf eingebetteten Edge-Geräten (Nvidia Jetson). Leistete Beiträge durch die Überarbeitung der Docker-Konfiguration und die Behebung von Softwarefehlern."
+      }
+    },
+    {
+      "period": "03/2023 - 09/2023",
+      "location": "Zürich",
+      "companySize": "~50",
+      "title": "Software Developer",
+      "company": "DoubleCloud",
+      "description": {
+        "en": "Maintained and developed the infrastructure around managed ClickHouse, in particular:\n- Secured metrics server by adding Nginx\n- Improved SaltStack configuration\n- Solved bugs in Telegraf Go plugins",
+        "de": "Wartung und Entwicklung der Infrastruktur um Managed ClickHouse, insbesondere:\n- Absicherung des Metrikenservers durch Hinzufügen von Nginx\n- Verbesserung der SaltStack-Konfiguration\n- Fehlerbehebung in Telegraf Go-Plugins"
+      }
+    },
+    {
+      "period": "06/2021 - 09/2022",
+      "location": "Zürich",
+      "companySize": "~50",
+      "title": "Software Developer",
+      "company": "Firebolt",
+      "description": {
+        "en": "Maintained and developed the SQL optimization engine and testing infrastructure.\n- Expanded supported SQL syntax and optimizations\n- Reworked the test framework to support new test suite\n- Contributed to rewriting to higher standards the optimization engine",
+        "de": "Wartung und Entwicklung des SQL-Optimierungsmotors und der Testinfrastruktur.\n- Erweiterung der unterstützten SQL-Syntax und Optimierungen\n- Anpassung des Testframeworks für neue Testserien\n- Beitrag zur Neuschreibung des Optimierungsmotors"
+      }
+    },
+    {
+      "period": "08/2020 - 02/2021",
+      "location": "Zug",
+      "companySize": "5",
+      "title": "Developer / Analyst",
+      "company": "F-Trust",
+      "description": {
+        "en": "Maintained and developed a Trading Engine (C++).\n- Redesigned, implemented and migrated storage (PostgreSQL)\n- Extracted and integrated data from multiple log streams\n- Analyzed data to highlight opportunities for improvement (Julia)",
+        "de": "Wartung und Entwicklung eines Handelsmotors (C++).\n- Neugestaltung, Implementierung und Migration der Architektur der Datenspeicherung\n- Extraktion und Integration von Daten aus mehreren Log-Streams\n- Datenanalyse zur Hervorhebung von Verbesserungsmöglichkeiten"
+      }
+    },
+    {
+      "period": "10/2017 - 05/2020",
+      "location": "Zürich",
+      "companySize": "100k",
+      "title": "Software Developer",
+      "company": "Google",
+      "description": {
+        "en": "Within Search, productionized an initially experimental tool (C++).\n- Improved runtime from days to hours\n- Added support for new kinds of data\n- Made the results easily visualizable and monitorable\n- Made onboarding orders of magnitude faster for most cases",
+        "de": "Im Bereich Suche, ein ursprünglich experimentelles Tool in den produktiven Einsatz überführt (C++).\n- Verbesserung der Laufzeit von Tagen auf Stunden\n- Unterstützung für neue Datentypen\n- Ergebnisse leicht visualisierbar und überwachbar\n- Beschleunigung und Vereinfachung des Onboarding-Prozesses"
+      }
+    },
+    {
+      "period": "04/2016 - 10/2017",
+      "location": "Luqa, Malta",
+      "companySize": "~50",
+      "title": "Software Developer",
+      "company": "Ascent Software",
+      "description": {
+        "en": "I helped maintain and develop a driver (C++) for automotive communications, running both on regular computers and embedded (QNX real-time OS) systems.",
+        "de": "Bei der Wartung und Entwicklung eines Treibers (C++) für die Kommunikation in der Automobilindustrie, der sowohl auf regulären Computern als auch auf eingebetteten Systemen (QNX-Echtzeitbetriebssystem) lief."
+      }
+    },
+    {
+      "period": "04/2015 - 04/2016",
+      "location": "Genua, Italy",
+      "companySize": "5",
+      "title": "Junior Developer",
+      "company": "Rulex Inc./CNR",
+      "description": {
+        "en": "Explored options for speeding up C algorithms with CPU (OpenMP) and GPU (Nvidia CUDA) parallelization. Transported MATLAB algorithms to Python.",
+        "de": "Erforschung von Möglichkeiten zur Beschleunigung von C-Algorithmen mit CPU (OpenMP) und GPU (Nvidia CUDA) Parallelisierung. Übertragung von MATLAB-Algorithmen nach Python."
+      }
+    }
+  ]
+}
