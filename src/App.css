@@ -36,3 +36,75 @@
     transform: rotate(360deg);
   }
 }
+
+.cv {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.header {
+  text-align: center;
+}
+
+.photo {
+  width: 80px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.contact-info {
+  margin-top: 10px;
+}
+
+.contact-info p {
+  margin: 0;
+}
+
+section {
+  margin-top: 30px;
+}
+
+.experience-entry {
+  margin-bottom: 20px;
+}
+
+.experience-entry h3 {
+  margin: 0;
+}
+
+.experience-entry .period {
+  color: gray;
+}
+
+.skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 250px; /* Set a max width to ensure the stars stay in line */
+  margin-bottom: 5px; /* Add some spacing between skills */
+}
+
+.main-content {
+  display: flex;
+  margin-top: 30px;
+}
+
+.left-column {
+  width: 75%;
+  padding-right: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.right-column {
+  width: 25%;
+  padding-left: 10px;
+}
+
+.language-selector {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
