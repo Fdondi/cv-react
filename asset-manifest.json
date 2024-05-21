@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cv-react/static/css/main.09222c03.css",
-    "main.js": "/cv-react/static/js/main.ca6bf650.js",
+    "main.js": "/cv-react/static/js/main.5a287943.js",
     "static/js/453.6bf921a5.chunk.js": "/cv-react/static/js/453.6bf921a5.chunk.js",
     "index.html": "/cv-react/index.html",
     "main.09222c03.css.map": "/cv-react/static/css/main.09222c03.css.map",
-    "main.ca6bf650.js.map": "/cv-react/static/js/main.ca6bf650.js.map",
+    "main.5a287943.js.map": "/cv-react/static/js/main.5a287943.js.map",
     "453.6bf921a5.chunk.js.map": "/cv-react/static/js/453.6bf921a5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.09222c03.css",
-    "static/js/main.ca6bf650.js"
+    "static/js/main.5a287943.js"
   ]
 }
