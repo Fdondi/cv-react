@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 
-
-const Header = () => (
+const Header = ({tagline, lang}) => (
   <header className="header">
     <img src="me.jpg" alt="Francesco Dondi" className="photo" />
     <h1>Francesco Dondi</h1>
-    <p>The guarantee of experience, the enthusiasm for good engineering.</p>
-    <p><a href="https://github.com/Fdondi/cv-latex/blob/main/cv_en.pdf">Latest version of this CV</a></p>
+    <p>{tagline}</p>
+    <p><a href={'https://github.com/Fdondi/cv-latex/blob/main/cv_' + lang + '.pdf'}>Latest version of this CV</a></p>
     <div className="contact-info">
       <p>Email: <a href="mailto:francesco314@gmail.com">francesco314@gmail.com</a></p>
       <p>Phone: +41 76 456 50 32</p>
@@ -65,6 +64,42 @@ const LanguageSelector = ({ language, setLanguage }) => (
   </div>
 );
 
+// Custom hook to fetch data
+const useFetch = (url, initialData) => {
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error(`Error fetching the data from ${url}:`, error);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, loading };
+};
+
+const Error = ({ message }) => (
+    <div className="cv">
+      <div className="main-content">
+        <div className="left-column">
+          <Section title="Error loading data">
+            <p>
+              {message}
+            </p>
+          </Section>
+        </div>
+      </div>
+    </div>
+  );
+
+// Using the custom hook in your component
 function AppContent(){
   const [language, setLanguage] = useState('en'); // Default language is English
 
@@ -77,40 +112,37 @@ function AppContent(){
     }
   }, [locationHook.search]);
 
-  const [skills, setSkills] = useState({});
+  const { data: skills, loading: skillsLoading } = useFetch(`/cv-react/data/skills.json`, null);
+  const { data: experiences, loading: experiencesLoading } = useFetch(`/cv-react/data/experiences.json`, null);
+  const { data: structure, loading: strucntureLoading } = useFetch(`/cv-react/data/structure.json`, null);
 
-  const isProduction = process.env.NODE_ENV === 'production';
-  const rootUrl = isProduction ? `${process.env.PUBLIC_URL}` : '';
+  const err = [];
+  if (!skills) err.push('Skills');
+  if (!experiences) err.push('Experiences');
+  if (!structure) err.push('Structure');
 
-  useEffect(() => {
-    fetch(`${rootUrl}/skills.json`)
-      .then(response =>response.json())
-      .then(data => setSkills(data.skills))
-      .catch(error => console.error('Error fetching the skills data:', error));
-  }, []);
+  if (skillsLoading || experiencesLoading || strucntureLoading) {
+    return <div>Loading...</div>;
+  }
 
-  const [experiences, setExperiences] = useState([]);
-
-  useEffect(() => {
-    fetch(`${rootUrl}/experiences.json`)
-    .then(response =>response.json())
-    .then(data => setExperiences(data.experiences))
-    .catch(error => console.error('Error fetching the experiences data:', error));
-}, []);
+  if(err.length > 0){
+    console.log(err);
+    return Error({message: 'Error loading data: ' + err.join(', ')});
+  }
 
   return (
   <div className="cv">
-    <Header />
+    <Header tagline={structure.tagline[language]} lang={language}/>
     <LanguageSelector language={language} setLanguage={setLanguage} />
     <div className="main-content">
       <div className="left-column">
-        <Section title="Who I am">
+        <Section title={structure.presentation[language]}>
           <p>
-            As a seasoned software developer, I bring a wealth of experience in developing robust software solutions, optimizing SQL databases, and implementing effective data analytics. My expertise ranges from securing and improving server configurations to developing end-to-end sophisticated software solutions. I'm known among my peers and supervisors for being a reliable, intelligent, and friendly colleague, one who is always ready to take on responsibility and contribute to the team's success.
+            {experiences.description[language]}
           </p>
         </Section>
         <Section title="Professional Experience">
-          {experiences.map((experience, index) => (
+          {experiences.experiences.map((experience, index) => (
               <ExperienceEntry
                 key={index}
                 period={experience.period}
