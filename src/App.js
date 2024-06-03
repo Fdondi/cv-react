@@ -98,6 +98,94 @@ const Error = ({ message }) => (
       </div>
     </div>
   );
+  
+  const TwoColumnLayout = ({ leftContent, rightContent }) => {
+    return (
+      <div className="main-content">
+        <div className="left-column">
+          {leftContent}
+        </div>
+        <div className="right-column">
+          {rightContent}
+        </div>
+      </div>
+    );
+  };
+
+  const FormalEducation = (educationData) => {
+
+    return (
+      <div>
+        {educationData.data.map((education, index) => (
+          <EducationItem
+            key={index}
+            date={education.date}
+            title={education.title}
+            institution={education.institution}
+            additional={education.additional}
+            link={education.link}
+          />
+        ))}
+      </div>
+    );
+  };
+  
+  const EducationItem = ({ date, title, institution, additional, link }) => (
+    <div>
+        <h6> {link ? <a href={link} target="_blank" rel="noopener noreferrer">{title}</a> : title} </h6>
+        {institution}
+        <i>{date}</i>
+        {additional && <i>{additional}</i>}
+        </div>
+  );
+
+ const ContinuousLearning = (courseKinds) => (
+<>
+    {courseKinds.data.map((courseCategory, index) => (
+    <SubSection key={index} {...courseCategory} />
+    ))}
+</>
+);
+
+function SubSection({ title, courses, skills }){
+  console.log( "Helloo!");
+  const courseElements = 
+    courses.map((course, index) => (
+      <CourseItem key={index} {...course} />
+    ));
+
+  const skillElements = 
+    skills.map((skill, index) => (
+      <Skill key={index} {...skill} />
+    ));
+
+  return  ( <section>
+  <h3>{title}</h3>
+  <TwoColumnLayout leftContent={courseElements} rightContent={skillElements} />
+</section> );
+}
+
+const CourseItem = ({ date, title, provider }) => (
+ <p>
+    <b>{title}</b> - {provider} - <i>{date}</i>
+</p>
+);
+  
+  const Projects = () => (
+     "Add each project item here"
+  );
+  
+  const Competitions = () => (
+    "Add each competition item here"
+  );
+  
+  const Personal = () => (
+    <>
+      <h5>Hobbies:</h5>
+      Read, hike, bike, swim.
+    </>
+  );
+
 
 // Using the custom hook in your component
 function AppContent(){
@@ -115,13 +203,17 @@ function AppContent(){
   const { data: skills, loading: skillsLoading } = useFetch(`/cv-react/data/skills.json`, null);
   const { data: experiences, loading: experiencesLoading } = useFetch(`/cv-react/data/experiences.json`, null);
   const { data: structure, loading: strucntureLoading } = useFetch(`/cv-react/data/structure.json`, null);
+  const { data: education, loading: educationLoading } = useFetch(`/cv-react/data/education.json`, null);
+  const { data: courses, loading: coursesLoading } = useFetch(`/cv-react/data/courses.json`, null);
 
   const err = [];
   if (!skills) err.push('Skills');
   if (!experiences) err.push('Experiences');
   if (!structure) err.push('Structure');
+  if (!courses) err.push('Courses');
+  if (!education) err.push('Education');
 
-  if (skillsLoading || experiencesLoading || strucntureLoading) {
+  if (skillsLoading || experiencesLoading || strucntureLoading || coursesLoading || educationLoading) {
     return <div>Loading...</div>;
   }
 
@@ -130,41 +222,48 @@ function AppContent(){
     return Error({message: 'Error loading data: ' + err.join(', ')});
   }
 
+  const presentationAndExperience = (
+    <>
+      <Section title={structure.presentation[language]}>
+        <p>{experiences.description[language]}</p>
+      </Section>
+      <Section title="Professional Experience">
+        {experiences.experiences.map((experience, index) => (
+          <ExperienceEntry
+            key={index}
+            period={experience.period}
+            location={experience.location}
+            companySize={experience.companySize}
+            title={experience.title}
+            company={experience.company}
+            description={experience.description[language]}
+          />
+        ))}
+      </Section>
+    </>
+  );
+
+  const professionalSkills = (
+    <>
+      {Object.keys(skills).map((section, index) => (
+        <Section key={index} title={section}>
+          {skills[section].map((skill, idx) => (
+            <Skill key={idx} name={skill.name} level={skill.level} />
+          ))}
+        </Section>
+      ))}
+    </>
+  );
+
   return (
   <div className="cv">
     <Header tagline={structure.tagline[language]} lang={language}/>
     <LanguageSelector language={language} setLanguage={setLanguage} />
-    <div className="main-content">
-      <div className="left-column">
-        <Section title={structure.presentation[language]}>
-          <p>
-            {experiences.description[language]}
-          </p>
-        </Section>
-        <Section title="Professional Experience">
-          {experiences.experiences.map((experience, index) => (
-              <ExperienceEntry
-                key={index}
-                period={experience.period}
-                location={experience.location}
-                companySize={experience.companySize}
-                title={experience.title}
-                company={experience.company}
-                description={experience.description[language]}
-              />
-            ))}
-        </Section>
-      </div>
-      <div className="right-column">
-        {Object.keys(skills).map((section, index) => (
-          <Section key={index} title={section}>
-            {skills[section].map((skill, idx) => (
-              <Skill key={idx} name={skill.name} level={skill.level} />
-            ))}
-          </Section>
-          ))}
-      </div>
-    </div>
+    <TwoColumnLayout leftContent={presentationAndExperience} rightContent={professionalSkills} />
+    <Section title="Formal Education"> <FormalEducation data={education}/> </Section>
+    <Section title="Continuous Learning"><ContinuousLearning data={courses} /></Section>
+    <Section title="Projects"><Projects /></Section>
+    <TwoColumnLayout leftContent={<Competitions />} rightContent={<Personal />} />
   </div>
 );
 }
