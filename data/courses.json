@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Data Science/Analytics",
+        "courses": [
+            { "date": "Nov 2023", "title": "Data Fluency: Exploring and Describing Data", "provider": "Linkedin" },
+            { "date": "Nov 2023", "title": "Power BI Essential Training", "provider": "Linkedin" },
+            { "date": "Oct 2023", "title": "Business Intelligence for Consultants", "provider": "Linkedin" },
+            { "date": "Oct 2023", "title": "Data Analytics for Business Professionals", "provider": "Linkedin" },
+            { "date": "Oct 2023", "title": "Excel: Economic Analysis and Data Analytics", "provider": "Linkedin" },
+            { "date": "Oct 2023", "title": "The Non-Technical Skills of Effective Data Scientists", "provider": "Linkedin" }
+        ],
+        "skills": [
+            { "name": "Data Analysis", "level": 3 },
+            { "name": "Data Visualization", "level": 4 },
+            { "name": "Probability", "level": 4 },
+            { "name": "Microsoft Power BI", "level": 2 },
+            { "name": "Microsoft Excel", "level": 5 },
+            { "name": "Pandas", "level": 4 }
+        ]
+    },
+    {
+        "title": "Machine Learning/LLMs/AI",
+        "courses": [
+            { "date": "Jan 2024", "title": "Generative AI with Large Language Models", "provider": "Coursera" }
+        ],
+        "skills": [
+            { "name": "LLMs", "level": 2 }
+        ]
+    },
+    {
+        "title": "Programming languages",
+        "courses": [
+            { "date": "Nov 2023", "title": "C# Essential Training 1: Types and Control Flow", "provider": "Linkedin" },
+            { "date": "Oct 2023", "title": "Learning MATLAB", "provider": "Linkedin" }
+        ],
+        "skills": [
+            { "name": "C#", "level": 2 },
+            { "name": "MATLAB", "level": 3 }
+        ]
+    },
+    {
+        "title": "Embedded development",
+        "courses": [
+            { "date": "Nov 2023", "title": "C Programming for Embedded Applications", "provider": "Linkedin" }
+        ],
+        "skills": [
+            { "name": "C Embedded", "level": 3 }
+        ]
+    },
+    {
+        "title": "Cloud and DevOps",
+        "courses": [
+            { "date": "Feb 2023", "title": "AWS Certified Solutions Architect - Associate (SAA-C02) Cert Prep: 1 Cloud Services Overview", "provider": "Linkedin" },
+            { "date": "Jan 2023", "title": "DevOps Foundations: Going Cloud Native", "provider": "Linkedin" }
+        ],
+        "skills": [
+            { "name": "Cloud Admin", "level": 3 },
+            { "name": "AWS Cloud", "level": 4 },
+            { "name": "DevOps", "level": 3 }
+        ]
+    }
+]

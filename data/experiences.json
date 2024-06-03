@@ -1,4 +1,8 @@
 {
+  "description": {
+    "en": "As a seasoned software developer, I bring a wealth of experience in developing robust software solutions, optimizing SQL databases, and implementing effective data analytics. My expertise ranges from securing and improving server configurations to developing end-to-end sophisticated software solutions. I'm known among my peers and supervisors for being a reliable, intelligent, and friendly colleague, one who is always ready to take on responsibility and contribute to the team's success.",
+    "de": "Als erfahrener Softwareentwickler beherrsche ich die Entwicklung robuster Softwarel¨osungen SQL-Datenbankoptimierung und effektive Datenanalyse. Von der Sicherung von Serverkonfigurationen bis zur Entwicklung komplexer Softwarel¨osungen bin ich in allen Entwicklungsphasen engagiert. Kollegen sch¨atzen meine Zuverl¨assigkeit, Intelligenz und Teamf¨ahigkeit."
+  },
   "experiences": [
     {
       "period": "03/2024 - 05/2024",
