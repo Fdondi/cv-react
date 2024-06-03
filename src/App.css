@@ -1,3 +1,53 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.left-column-header {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.right-column-header {
+  display: flex;
+  align-items: center;
+}
+
+.photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-left: 20px;
+}
+
+.contact-info {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-info i {
+  margin-right: 10px;
+}
+
+.tagline {
+  font-style: italic;
+  color: gray;
+}
+
 .App {
   text-align: center;
 }

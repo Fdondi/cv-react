@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
-const Header = ({tagline, lang}) => (
+const Header = ({ tagline, lang }) => (
   <header className="header">
-    <img src="me.jpg" alt="Francesco Dondi" className="photo" />
-    <h1>Francesco Dondi</h1>
-    <p>{tagline}</p>
-    <p><a href={'https://github.com/Fdondi/cv-latex/blob/main/cv_' + lang + '.pdf'}>Latest version of this CV</a></p>
-    <div className="contact-info">
-      <p>Email: <a href="mailto:francesco314@gmail.com">francesco314@gmail.com</a></p>
-      <p>Phone: +41 76 456 50 32</p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/francesco-dondi">francesco-dondi</a></p>
-      <p>GitHub: <a href="https://github.com/Fdondi">Fdondi</a></p>
-      <p>Address: Zugerstarsse 66, 8810 Horgen, ZH</p>
-      <p>Born: 29/10/1990</p>
-      <p>Citizenship: Italian, C permit</p>
-      <p>Marital Status: Married, no children</p>
+    <div className="header-content">
+      <div className="left-column-header">
+        <h1>Francesco Dondi</h1>
+        <p className="tagline">{tagline}</p>
+        <p><a href={'https://github.com/Fdondi/cv-latex/blob/main/cv_' + lang + '.pdf'}>Latest version of this CV</a></p>
+      </div>
+      <div className="right-column-header">
+        <div className="contact-info">
+          <p><i className="fas fa-envelope"></i> <a href="mailto:francesco314@gmail.com">francesco314@gmail.com</a></p>
+          <p><i className="fas fa-phone"></i> +41 76 456 50 32</p>
+          <p><i className="fab fa-linkedin"></i> <a href="https://linkedin.com/in/francesco-dondi">francesco-dondi</a></p>
+          <p><i className="fab fa-github"></i> <a href="https://github.com/Fdondi">Fdondi</a></p>
+          <p>Zugerstarsse 66, 8810 Horgen, ZH</p>
+          <p>Born: 29/10/1990</p>
+          <p>Citizenship: Italian, C permit</p>
+          <p>Marital Status: Married, no children</p>
+        </div>
+        <img src="/cv-react/data/me.jpg" alt="Francesco Dondi" className="photo" />
+      </div>
     </div>
   </header>
 );
