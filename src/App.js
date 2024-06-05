@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
+import courses from './data/courses.json';
+import education from './data/education.json';
+import experiences from './data/experiences.json';
+import skills from './data/skills.json';
+import structure from './data/structure.json';
+import me from './data/me.jpg';
 
 const Header = ({ tagline, lang }) => (
   <header className="header">
@@ -22,7 +28,7 @@ const Header = ({ tagline, lang }) => (
           <p>Citizenship: Italian, C permit</p>
           <p>Marital Status: Married, no children</p>
         </div>
-        <img src="/cv-react/data/me.jpg" alt="Francesco Dondi" className="photo" />
+        <img src={me} alt="Francesco Dondi" className="photo" />
       </div>
     </div>
   </header>
@@ -70,41 +76,6 @@ const LanguageSelector = ({ language, setLanguage }) => (
     ))}
   </div>
 );
-
-// Custom hook to fetch data
-const useFetch = (url, initialData) => {
-  const [data, setData] = useState(initialData);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error(`Error fetching the data from ${url}:`, error);
-        setLoading(false);
-      });
-  }, [url]);
-
-  return { data, loading };
-};
-
-const Error = ({ message }) => (
-    <div className="cv">
-      <div className="main-content">
-        <div className="left-column">
-          <Section title="Error loading data">
-            <p>
-              {message}
-            </p>
-          </Section>
-        </div>
-      </div>
-    </div>
-  );
   
   const TwoColumnLayout = ({ leftContent, rightContent }) => {
     return (
@@ -119,9 +90,7 @@ const Error = ({ message }) => (
     );
   };
 
-  const FormalEducation = (educationData) => {
-
-    return (
+  const FormalEducation = (educationData) => (
       <div>
         {educationData.data.map((education, index) => (
           <EducationItem
@@ -135,7 +104,6 @@ const Error = ({ message }) => (
         ))}
       </div>
     );
-  };
   
   const EducationItem = ({ date, title, institution, additional, link }) => (
     <div>
@@ -155,7 +123,6 @@ const Error = ({ message }) => (
 );
 
 function SubSection({ title, courses, skills }){
-  console.log( "Helloo!");
   const courseElements = 
     courses.map((course, index) => (
       <CourseItem key={index} {...course} />
@@ -206,28 +173,6 @@ function AppContent(){
       setLanguage(defaultLang);
     }
   }, [locationHook.search]);
-
-  const { data: skills, loading: skillsLoading } = useFetch(`/cv-react/data/skills.json`, null);
-  const { data: experiences, loading: experiencesLoading } = useFetch(`/cv-react/data/experiences.json`, null);
-  const { data: structure, loading: strucntureLoading } = useFetch(`/cv-react/data/structure.json`, null);
-  const { data: education, loading: educationLoading } = useFetch(`/cv-react/data/education.json`, null);
-  const { data: courses, loading: coursesLoading } = useFetch(`/cv-react/data/courses.json`, null);
-
-  const err = [];
-  if (!skills) err.push('Skills');
-  if (!experiences) err.push('Experiences');
-  if (!structure) err.push('Structure');
-  if (!courses) err.push('Courses');
-  if (!education) err.push('Education');
-
-  if (skillsLoading || experiencesLoading || strucntureLoading || coursesLoading || educationLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if(err.length > 0){
-    console.log(err);
-    return Error({message: 'Error loading data: ' + err.join(', ')});
-  }
 
   const presentationAndExperience = (
     <>

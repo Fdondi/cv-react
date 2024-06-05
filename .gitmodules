@@ -2,5 +2,5 @@
   path = public/data
   url = https://github.com/Fdondi/cv-data
 [submodule "public/data"]
-	path = public/data
+	path = src/data
 	url = https://github.com/Fdondi/cv-data
