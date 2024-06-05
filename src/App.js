@@ -7,7 +7,11 @@ import education from './data/education.json';
 import experiences from './data/experiences.json';
 import skills from './data/skills.json';
 import structure from './data/structure.json';
+import projects from './data/projects.json';
+
 import me from './data/me.jpg';
+import arduinoImg from './data/arduino_btc_project.jpg';
+import worterbuchImg from './data/worterbuch.png';
 
 const Header = ({ tagline, lang }) => (
   <header className="header">
@@ -144,13 +148,51 @@ const CourseItem = ({ date, title, provider }) => (
     <b>{title}</b> - {provider} - <i>{date}</i>
 </p>
 );
-  
-  const Projects = () => (
+
+const Projects = ({ projects }) => {
+  const imageMap = {
+    'arduino_btc_project.jpg': arduinoImg,
+    'worterbuch.png': worterbuchImg,
+    // Add other images here as needed
+  };
+
+  return (
     <Section title="Projects">
-     "Add each project item here"
-     </Section>
+      {projects.map((projectCategory, index) => (
+        <>
+        <h3>{projectCategory.category}</h3>
+        <TwoColumnLayout key={index} className="project-category"
+          leftContent={
+            <>
+              {projectCategory.items.map((item, idx) => (
+                <div key={idx} className="project-item">
+                  <div className="project-details">
+                    <img src={imageMap[item.image]} alt={item.title} className="project-image" />
+                    <div>
+                      <p className="project-date">{item.date}</p>
+                      <p className="project-title">{item.title}</p>
+                      <a href={`http://${item.link}`} className="project-link">{item.link}</a>
+                      <p className="project-description">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </>
+          }
+          rightContent={
+            <div className="project-skills">
+              {projectCategory.skills.map((skill, sIdx) => (
+                <Skill key={sIdx} {...skill}/>
+              ))}
+            </div>
+          }
+        />
+        </>
+      ))}
+    </Section>
   );
-  
+}
+
   const Competitions = () => (
     <Section title="Competitions">
     "Add each competition item here"
@@ -227,7 +269,7 @@ function AppContent(){
       />
       <FormalEducation data={education} />
       <ContinuousLearning data={courses} />
-      <Projects />
+      <Projects projects={projects}/>
       <TwoColumnLayout
         leftContent={<Competitions />}
         rightContent={<Personal />}

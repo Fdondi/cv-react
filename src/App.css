@@ -158,3 +158,39 @@ section {
   justify-content: center;
   margin-top: 10px;
 }
+
+-- Project
+
+.projects {
+  margin-bottom: 20px;
+}
+
+.project-category {
+  margin-bottom: 20px;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.project-details {
+  display: flex;
+}
+
+.project-image {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.project-date, .project-title, .project-link, .project-description {
+  margin: 0;
+}
+
+.project-skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
