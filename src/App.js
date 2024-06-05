@@ -91,7 +91,7 @@ const LanguageSelector = ({ language, setLanguage }) => (
   };
 
   const FormalEducation = (educationData) => (
-      <div>
+      <Section title="Formal Education">
         {educationData.data.map((education, index) => (
           <EducationItem
             key={index}
@@ -102,7 +102,7 @@ const LanguageSelector = ({ language, setLanguage }) => (
             link={education.link}
           />
         ))}
-      </div>
+      </Section>
     );
   
   const EducationItem = ({ date, title, institution, additional, link }) => (
@@ -115,11 +115,11 @@ const LanguageSelector = ({ language, setLanguage }) => (
   );
 
  const ContinuousLearning = (courseKinds) => (
-<>
+  <Section title="Continuous Learning">
     {courseKinds.data.map((courseCategory, index) => (
     <SubSection key={index} {...courseCategory} />
     ))}
-</>
+  </Section>
 );
 
 function SubSection({ title, courses, skills }){
@@ -146,11 +146,15 @@ const CourseItem = ({ date, title, provider }) => (
 );
   
   const Projects = () => (
+    <Section title="Projects">
      "Add each project item here"
+     </Section>
   );
   
   const Competitions = () => (
+    <Section title="Competitions">
     "Add each competition item here"
+    </Section>
   );
   
   const Personal = () => (
@@ -160,6 +164,34 @@ const CourseItem = ({ date, title, provider }) => (
     </>
   );
 
+
+const ProfessionalSkills = ({ skills }) => (
+    <>
+      {Object.keys(skills).map((section, index) => (
+        <Section key={index} title={section}>
+          {skills[section].map((skill, idx) => (
+            <Skill key={idx} name={skill.name} level={skill.level} />
+          ))}
+        </Section>
+      ))}
+    </>
+  );
+
+const ProfessionalExperience = ({ experiences, language }) => (
+  <Section title="Professional Experience">
+  {experiences.experiences.map((experience, index) => (
+    <ExperienceEntry
+      key={index}
+      period={experience.period}
+      location={experience.location}
+      companySize={experience.companySize}
+      title={experience.title}
+      company={experience.company}
+      description={experience.description[language]}
+    />
+  ))}
+  </Section>
+);
 
 // Using the custom hook in your component
 function AppContent(){
@@ -174,50 +206,34 @@ function AppContent(){
     }
   }, [locationHook.search]);
 
-  const presentationAndExperience = (
-    <>
+  const presentation = (
       <Section title={structure.presentation[language]}>
         <p>{experiences.description[language]}</p>
       </Section>
-      <Section title="Professional Experience">
-        {experiences.experiences.map((experience, index) => (
-          <ExperienceEntry
-            key={index}
-            period={experience.period}
-            location={experience.location}
-            companySize={experience.companySize}
-            title={experience.title}
-            company={experience.company}
-            description={experience.description[language]}
-          />
-        ))}
-      </Section>
-    </>
-  );
-
-  const professionalSkills = (
-    <>
-      {Object.keys(skills).map((section, index) => (
-        <Section key={index} title={section}>
-          {skills[section].map((skill, idx) => (
-            <Skill key={idx} name={skill.name} level={skill.level} />
-          ))}
-        </Section>
-      ))}
-    </>
   );
 
   return (
-  <div className="cv">
-    <Header tagline={structure.tagline[language]} lang={language}/>
-    <LanguageSelector language={language} setLanguage={setLanguage} />
-    <TwoColumnLayout leftContent={presentationAndExperience} rightContent={professionalSkills} />
-    <Section title="Formal Education"> <FormalEducation data={education}/> </Section>
-    <Section title="Continuous Learning"><ContinuousLearning data={courses} /></Section>
-    <Section title="Projects"><Projects /></Section>
-    <TwoColumnLayout leftContent={<Competitions />} rightContent={<Personal />} />
-  </div>
-);
+    <div className="cv">
+      <Header tagline={structure.tagline[language]} lang={language} />
+      <LanguageSelector language={language} setLanguage={setLanguage} />
+      <TwoColumnLayout
+        leftContent={
+          <>
+            {presentation}
+            <ProfessionalExperience experiences={experiences} language={language} />
+          </>
+        }
+        rightContent={<ProfessionalSkills skills={skills} />}
+      />
+      <FormalEducation data={education} />
+      <ContinuousLearning data={courses} />
+      <Projects />
+      <TwoColumnLayout
+        leftContent={<Competitions />}
+        rightContent={<Personal />}
+      />
+    </div>
+  );
 }
 
 const App = () => (
