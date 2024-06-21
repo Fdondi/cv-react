@@ -185,12 +185,24 @@ section {
   margin-right: 20px;
 }
 
-.project-date, .project-title, .project-link, .project-description {
-  margin: 0;
-}
-
 .project-skills {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+ -- Competitions
+
+ .competitions {
+  margin-bottom: 20px;
+}
+
+.competition-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.competition-year, .competition-title, .competition-award, .competition-organization, .competition-description {
+  margin: 0;
 }

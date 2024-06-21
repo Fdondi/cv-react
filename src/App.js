@@ -8,6 +8,7 @@ import experiences from './data/experiences.json';
 import skills from './data/skills.json';
 import structure from './data/structure.json';
 import projects from './data/projects.json';
+import competitions from './data/competitions.json';
 
 import me from './data/me.jpg';
 import arduinoImg from './data/arduino_btc_project.jpg';
@@ -19,7 +20,7 @@ const Header = ({ tagline, lang }) => (
       <div className="left-column-header">
         <h1>Francesco Dondi</h1>
         <p className="tagline">{tagline}</p>
-        <p><a href={'https://github.com/Fdondi/cv-latex/blob/main/cv_' + lang + '.pdf'}>Latest version of this CV</a></p>
+        <p><a href={'https://github.com/Fdondi/cv-latex/blob/main/cv_' + lang + '.pdf'}>Pdf version of this CV</a></p>
       </div>
       <div className="right-column-header">
         <div className="contact-info">
@@ -169,9 +170,10 @@ const Projects = ({ projects }) => {
                   <div className="project-details">
                     <img src={imageMap[item.image]} alt={item.title} className="project-image" />
                     <div>
-                      <p className="project-date">{item.date}</p>
-                      <p className="project-title">{item.title}</p>
-                      <a href={`http://${item.link}`} className="project-link">{item.link}</a>
+                      <p className="project-date">
+                        {item.date}&nbsp;&nbsp;&nbsp; 
+                      <a href={`http://${item.link}`} className="project-link"><b>{item.title}</b></a>
+                      </p>
                       <p className="project-description">{item.description}</p>
                     </div>
                   </div>
@@ -193,11 +195,20 @@ const Projects = ({ projects }) => {
   );
 }
 
-  const Competitions = () => (
+
+const Competitions = ({ competitions }) => {
+  return (
     <Section title="Competitions">
-    "Add each competition item here"
+      {competitions.map((comp, index) => (
+        <div key={index} className="competition-item">
+          {comp.when} ++ {comp.organization} {comp.title}
+          {comp.award && <p className="competition-award">{comp.award} <img src={`/images/${comp.image}`} alt={comp.award} /></p>}
+          {comp.description && <p className="competition-description">{comp.description}</p>}
+        </div>
+      ))}
     </Section>
   );
+};
   
   const Personal = () => (
     <>
@@ -271,7 +282,7 @@ function AppContent(){
       <ContinuousLearning data={courses} />
       <Projects projects={projects}/>
       <TwoColumnLayout
-        leftContent={<Competitions />}
+        leftContent={<Competitions competitions={competitions} />}
         rightContent={<Personal />}
       />
     </div>
