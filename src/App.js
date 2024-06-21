@@ -197,12 +197,17 @@ const Projects = ({ projects }) => {
 
 
 const Competitions = ({ competitions }) => {
+  const icon = {
+    "Gold": "🥇",
+    "Silver": "🥈",
+    "Bronze": "🥉",
+  }
   return (
     <Section title="Competitions">
       {competitions.map((comp, index) => (
         <div key={index} className="competition-item">
           {comp.when} ++ {comp.organization} {comp.title}
-          {comp.award && <p className="competition-award">{comp.award} <img src={`/images/${comp.image}`} alt={comp.award} /></p>}
+          {comp.award && <p className="competition-award">{comp.award }{icon[comp.award]}</p>}
           {comp.description && <p className="competition-description">{comp.description}</p>}
         </div>
       ))}
