@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cv-react/static/css/main.0184b86a.css",
-    "main.js": "/cv-react/static/js/main.a1364c88.js",
+    "main.js": "/cv-react/static/js/main.dd5a0c03.js",
     "static/js/453.6bf921a5.chunk.js": "/cv-react/static/js/453.6bf921a5.chunk.js",
     "static/media/fa-solid-900.ttf": "/cv-react/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/arduino_btc_project.jpg": "/cv-react/static/media/arduino_btc_project.9028419600dbcccc150f.jpg",
@@ -16,11 +16,11 @@
     "static/media/fa-v4compatibility.woff2": "/cv-react/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/cv-react/index.html",
     "main.0184b86a.css.map": "/cv-react/static/css/main.0184b86a.css.map",
-    "main.a1364c88.js.map": "/cv-react/static/js/main.a1364c88.js.map",
+    "main.dd5a0c03.js.map": "/cv-react/static/js/main.dd5a0c03.js.map",
     "453.6bf921a5.chunk.js.map": "/cv-react/static/js/453.6bf921a5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0184b86a.css",
-    "static/js/main.a1364c88.js"
+    "static/js/main.dd5a0c03.js"
   ]
 }
